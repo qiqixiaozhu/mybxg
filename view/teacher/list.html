@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
-    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="./assets/nprogress/nprogress.css">
-    <link rel="stylesheet" href="./less/index.css">
+    <?php include('./view/common/style.html'); ?>
 </head>
 <body>
     
@@ -102,40 +99,7 @@
     <div class="main">
         <div class="container-fluid">
             <!-- 头部 -->
-            <div class="header">
-                <nav class="navbar navbar-custom">
-                    <div class="navbar-header">
-                        <a href="javascript:;" class="navbar-brand">
-                            <i class="fa fa-navicon"></i>
-                        </a>
-                    </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-bell"></i>
-                                <span class="badge">8</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./settings.html">
-                                <i class="fa fa-user"></i>
-                                个人中心
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-sign-out"></i>
-                                退出
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-tasks"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>          
-            </div>
+            <?php include('./view/common/header.html'); ?>
             <!-- 讲师列表 -->
             <div class="body teacher-list">
                 <!-- 面包屑 -->
@@ -169,20 +133,8 @@
                                 <th>操作</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>赵玉川</td>
-                                <td>布头儿</td>
-                                <td>28</td>
-                                <td>男</td>
-                                <td>15901256171</td>
-                                <td>
-                                    <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
-                                    <a href="./teacher_add.html" class="btn btn-info btn-xs">编 辑</a>
-                                    <a href="javascript::" class="btn btn-warning btn-xs">注 销</a>
-                                </td>
-                            </tr>
+                        <tbody id="teacherInfo">
+                            
                         </tbody>
                     </table>
                 </div>
@@ -241,9 +193,36 @@
         </div>
     </div>
 
-    <script src="./assets/jquery/jquery.min.js"></script>
+    <!-- <script src="./assets/jquery/jquery.min.js"></script>
     <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="./assets/nprogress/nprogress.js"></script>
-    <script src="./js/common.js"></script>
+    <script src="./js/common.js"></script> -->
+    <script type="text/template" id="teacherTpl">
+        {{each result}}
+        <tr>
+            <td>{{$index+1}}</td>
+            <td>{{$value.tc_name}}</td>
+            <td>{{$value.tc_roster}}</td>
+            <td>{{$value.tc_join_date}}</td>
+            <td>
+                {{if $value.tc_gender==1 }}
+                女
+                {{else}}
+                男
+                {{/if}}
+            </td>
+            <td>{{$value.tc_cellphone}}</td>
+            <td>
+                <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
+                <a href="./teacher_add.html" class="btn btn-info btn-xs">编 辑</a>
+                <a href="javascript::" class="btn btn-warning btn-xs">注 销</a>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+    <?php include('./view/common/script.html'); ?>
+    <script type="text/javascript">
+        require(['teacherlist']);
+    </script>
 </body>
 </html>
