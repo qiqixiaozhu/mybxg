@@ -42,8 +42,9 @@
                 type:'post',
                 url:'/api/login',
                 data:$('#loginForm').serialize(),
-                datatype:'json',
+                dataType:'json',
                 success:function(data){
+                    console.log(data);
                     if(data.code==200){
                         location.href='/main/index';
                     }
