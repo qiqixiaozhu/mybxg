@@ -25,7 +25,7 @@ define(['jquery','cookie'],function($){
 
     //判断是否登录
     var flag=$.cookie('PHPSESSID');
-    if(!flag){
+    if(!flag && location.pathname!='/main/login'){
         location.href='/main/login';
     }
     //登录成功 获取用户信息

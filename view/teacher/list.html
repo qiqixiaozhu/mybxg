@@ -8,93 +8,7 @@
 <body>
     
     <!-- 侧边栏 -->
-    <div class="aside">
-        <!-- 个人资料 -->
-        <div class="profile">
-            <!-- 头像 -->
-            <div class="avatar img-circle">
-                <img src="./uploads/avatar.jpg">
-            </div>
-            <h4>布头儿</h4>
-        </div>
-        <!-- 导航菜单 -->
-        <div class="navs">
-            <ul class="list-unstyled">
-                <li>
-                    <a href="./index.html">
-                        <i class="fa fa-home"></i>
-                        仪表盘
-                    </a>
-                </li>
-                <li>
-                    <a href="./user_list.html">
-                        <i class="fa fa-bell"></i>
-                        用户管理
-                    </a>
-                </li>
-                <li>
-                    <a href="./teacher_list.html" class="active">
-                        <i class="fa fa-bell"></i>
-                        讲师管理
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="fa fa-cog"></i>
-                        课程管理
-                        <i class="arrow fa fa-angle-right"></i>
-                    </a>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="./course_add.html">
-                                 课程添加
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./course_list.html">
-                                课程列表
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./course_category.html">
-                                课程分类
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./course_topic.html">
-                                课程专题
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="./advert_list.html">
-                        <i class="fa fa-bell"></i>
-                        广告管理
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="fa fa-cog"></i>
-                        系统设置
-                        <i class="arrow fa fa-angle-right"></i>
-                    </a>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="javascript:;">
-                                网站设置
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                 权限管理
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <?php include('./view/common/aside.html'); ?>
     <!-- 主体 -->
     <div class="main">
         <div class="container-fluid">
@@ -108,7 +22,7 @@
                     <li class="active">讲师列表</li>
                 </ol>
                 <div class="page-title">
-                    <a href="./teacher_add.html" class="btn btn-success btn-sm pull-right">添加讲师</a>
+                    <a href="/teacher/add" class="btn btn-success btn-sm pull-right">添加讲师</a>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -205,17 +119,28 @@
             <td>{{$value.tc_roster}}</td>
             <td>{{$value.tc_join_date}}</td>
             <td>
-                {{if $value.tc_gender==1 }}
+                {{if $value.tc_gender == 1 }}
                 女
                 {{else}}
                 男
                 {{/if}}
             </td>
             <td>{{$value.tc_cellphone}}</td>
-            <td>
+            <td data-tcId='{{$value.tc_id}}' data-status='{{$value.tc_status}}'>
                 <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
-                <a href="./teacher_add.html" class="btn btn-info btn-xs">编 辑</a>
-                <a href="javascript::" class="btn btn-warning btn-xs">注 销</a>
+                <a href="/teacher/add" class="btn btn-info btn-xs">编 辑</a>
+                <!-- {{if $value.tc_status == 0 }}
+                <a href="javascript:;" class="btn btn-warning btn-xs eod">注销</a>
+                {{else}}
+                <a href="javascript:;" class="btn btn-warning btn-xs eod">启用</a>
+                {{/if}} -->
+                <a href="javascript:;" class="btn btn-warning btn-xs eod">
+                    {{if $value.tc_status == 0}}
+                        注销
+                    {{else}}
+                        启用
+                    {{/if}}
+                </a>
             </td>
         </tr>
         {{/each}}
