@@ -141,7 +141,7 @@
             <td>{{$value.tc_cellphone}}</td>
             <td data-tcId='{{$value.tc_id}}' data-status='{{$value.tc_status}}'>
                 <a href="#teacherModal" class="btn btn-info btn-xs preview">查 看</a>
-                <a href="/teacher/add" class="btn btn-info btn-xs">编 辑</a>
+                <a href="/teacher/add?tc_id={{$value.tc_id}}" class="btn btn-info btn-xs">编 辑</a>
                 <!-- {{if $value.tc_status == 0 }}
                 <a href="javascript:;" class="btn btn-warning btn-xs eod">注销</a>
                 {{else}}

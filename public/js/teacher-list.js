@@ -59,7 +59,7 @@ define(['jquery','template','bootstrap'],function($,template){
 						console.log(data);
 						if(data.code == 200){
 							var html=template('modalTpl',data.result);
-							$("#modalInfo").html(html);
+							$("#teacherModal #modalInfo").html(html);
 							$("#teacherModal").modal();
 						}
 					}
