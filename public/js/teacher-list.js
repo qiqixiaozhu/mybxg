@@ -1,4 +1,4 @@
-define(['jquery','template'],function($,template){
+define(['jquery','template','bootstrap'],function($,template){
 	$.ajax({
 		type:'get',
 		url:'/api/teacher',
@@ -44,6 +44,28 @@ define(['jquery','template'],function($,template){
 					}
 				});
 			});
+
+			//查看讲师
+			$(".preview").click(function(){
+				var td=$(this).closest('td');
+				var tcId=td.attr('data-tcId');
+				//数据请求 调用接口
+				$.ajax({
+					type : 'get',
+					url : '/api/teacher/view',
+					data : {tc_id:tcId},
+					dataType : 'json',
+					success : function(data){
+						console.log(data);
+						if(data.code == 200){
+							var html=template('modalTpl',data.result);
+							$("#modalInfo").html(html);
+							$("#teacherModal").modal();
+						}
+					}
+				});
+			});
+
 		}
 	});
 });

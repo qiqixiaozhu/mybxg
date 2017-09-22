@@ -6,7 +6,7 @@ define(['jquery','cookie'],function($){
 			data:$('#loginForm').serialize(),
 			dataType:'json',
 			success:function(data){
-				//console.log(data);
+				console.log(data);
 				if(data.code==200){
 					$.cookie('loginInfo',JSON.stringify(data.result),{path:'/'});
 					location.href='/main/index';

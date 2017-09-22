@@ -1,4 +1,4 @@
-define(['jquery','cookie'],function($){
+define(['jquery','template','cookie'],function($,template){
         // NProgress.start();
 
     // NProgress.done();
@@ -31,6 +31,23 @@ define(['jquery','cookie'],function($){
     //登录成功 获取用户信息
     var loginInfo=$.cookie('loginInfo');
     loginInfo=loginInfo&&JSON.parse(loginInfo);
-    $('.aside profile img').attr('src',loginInfo.tc_avatar);
-    $('.aside profile h4').html(loginInfo.tc_name); 
+
+    var profile='<div class="avatar img-circle">\
+                {{if tc_avatar}}\
+                    <img src="{{tc_avatar}}">\
+                {{else}}\
+                    <img src="/public/images/default.png">\
+                {{/if}}\
+                </div>\
+                <h4>布头儿</h4>';
+    var html=template.render(profile,loginInfo||{});
+    $('.aside .profile').html(html);
+
+    // if(loginInfo){
+    //     $('.aside profile img').attr('src',loginInfo.tc_avatar);
+    //     $('.aside profile h4').html(loginInfo.tc_name);
+    // }
+     // $('.aside .profile img').attr('src',loginInfo.tc_avatar);
+     // $('.aside .profile h4').html(loginInfo.tc_name);
+
 });
