@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/nprogress/nprogress.css">
     <link rel="stylesheet" href="./less/index.css"> -->
     <?php include('./view/common/style.html'); ?>
+    <link rel="stylesheet" href="/public/assets/bootstrap-datepicker/css/bootstrap-datepicker.css">
 </head>
 <body>
     
@@ -54,7 +55,7 @@
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">入职时间</label>
                             <div class="col-xs-4">
-                                <input name="tc_join_date" value="{{tc_join_date}}" type="text" class="form-control input-sm">
+                                <input data-provide='datepicker' data-date-language='zh-CN' data-date-format='yyyy-mm-dd' name="tc_join_date" value="{{tc_join_date}}" type="text" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="form-group">
@@ -83,6 +84,7 @@
                             </div>                          
                         </div>
                     </form>
+
                 </div>
     </script>
     <?php include('./view/common/script.html'); ?>
