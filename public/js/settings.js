@@ -1,4 +1,4 @@
-define(['jquery','template','uploadify'],function($,template){
+define(['jquery','template','uploadify','region'],function($,template){
 	$.ajax({
 		type:'get',
 		url:'/api/teacher/profile',
@@ -21,6 +21,11 @@ define(['jquery','template','uploadify'],function($,template){
 					console.log(obj);
 					$(".preview img").attr('src',obj.result.path);
 				}
+			});
+
+			//省市联动
+			$("#pcd").region({
+				url : '/public/assets/jquery-region/region.json'
 			});
 		}
 	});
