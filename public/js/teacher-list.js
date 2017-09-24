@@ -1,4 +1,6 @@
-define(['jquery','template','bootstrap'],function($,template){
+define(['jquery','template','util','bootstrap'],function($,template,util){
+	//左侧菜单栏选中功能
+	util.setMenu(location.pathname);
 	$.ajax({
 		type:'get',
 		url:'/api/teacher',

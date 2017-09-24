@@ -17,7 +17,11 @@ require.config({
 		login:'../js/login',
 		teacherlist:'../js/teacher-list',
 		teacheradd:'../js/teacher-add',
-		settings:'../js/settings'
+		settings:'../js/settings',
+		index:'../js/index',
+		userlist:'../js/user-list',
+		courseadd:'../js/course-add',
+		courselist:'../js/course-list'
 	},
 	shim:{
 		bootstrap:{
