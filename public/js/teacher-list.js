@@ -1,10 +1,13 @@
-define(['jquery','template','bootstrap'],function($,template){
+define(['jquery','template','util','bootstrap'],function($,template,util){
+	//左侧菜单栏选中功能
+	// console.log(location.pathname);
+	util.setmenu(location.pathname);
 	$.ajax({
 		type:'get',
 		url:'/api/teacher',
 		dataType:'json',
 		success:function(data){
-			console.log(data);
+			//console.log(data);
 			//填充数据
 			var html=template('teacherTpl',data);
 			$("#teacherInfo").html(html);
@@ -56,7 +59,7 @@ define(['jquery','template','bootstrap'],function($,template){
 					data : {tc_id:tcId},
 					dataType : 'json',
 					success : function(data){
-						console.log(data);
+						//console.log(data);
 						if(data.code == 200){
 							var html=template('modalTpl',data.result);
 							$("#teacherModal #modalInfo").html(html);
