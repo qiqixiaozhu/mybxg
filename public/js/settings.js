@@ -1,4 +1,4 @@
-define(['jquery','template','uploadify','region'],function($,template){
+define(['jquery','template','ckeditor','uploadify','region','datepicker','language'],function($,template,CKEDITOR){
 	$.ajax({
 		type:'get',
 		url:'/api/teacher/profile',
@@ -23,9 +23,17 @@ define(['jquery','template','uploadify','region'],function($,template){
 				}
 			});
 
-			//省市联动
+			//省级联动
 			$("#pcd").region({
 				url : '/public/assets/jquery-region/region.json'
+			});
+
+			//富文本
+			CKEDITOR.replace('editor',{
+				toolbarGroups:[
+				{name:'clipboard',groups:['clipboard','undo']},
+				{name:'editing',groups:['find','selection','spellchecker','editing']}
+				]
 			});
 		}
 	});
