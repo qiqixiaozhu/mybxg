@@ -39,7 +39,7 @@ define(['jquery','template','cookie'],function($,template){
                     <img src="/public/images/default.png">\
                 {{/if}}\
                 </div>\
-                <h4>布头儿</h4>';
+                <h4>{{tc_name}}</h4>';
     var html=template.render(profile,loginInfo||{});
     $('.aside .profile').html(html);
 
