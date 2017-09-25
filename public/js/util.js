@@ -1,7 +1,7 @@
 define(['jquery'],function($){
 	return {
 		qs:function(key){
-			console.log(location.search);
+			//console.log(location.search);
 			var param=location.search.substr(1);
 			var tcId=null;
 			if(param){
