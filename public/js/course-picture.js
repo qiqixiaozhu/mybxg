@@ -64,8 +64,8 @@ define(['jquery','template','util','uploadify','jcrop','form'],function($,templa
 					img.Jcrop({
 						aspectRatio : 2,
 					},function(){
-						// nowCrop || nowCrop.destroy();
-						// nowCrop=this;
+						nowCrop && nowCrop.destroy();
+						nowCrop=this;
 						//缩略图显示
 						this.initComponent('Thumbnailer',{width : 240,height :120,mythumb : '.thumb'});
 						// console.log(this);
